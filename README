@@ -1,6 +1,5 @@
-To enable this for executing every hour, post this string to your crontab (crontab -e):
+To enable this for executing every hour, post this string to your crontab (@crontab -e@):
 
-0 * * * * /usr/bin/ruby -rubygems {PATH_TO_REPO}/bn.rb {LOGIN} {PASSWORD}
+@0 * * * * /usr/bin/ruby -rubygems {PATH_TO_REPO}/bn.rb {LOGIN} {PASSWORD}@
 
-Be sure, that growlnotify binary is in your PATH variable.
-i
+Be sure, that @growlnotify@ binary is in your @PATH@ variable.
