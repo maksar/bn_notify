@@ -33,6 +33,6 @@ message << 'Счет: ' + Iconv.iconv('utf-8', 'cp1251', name).join() + '
 message << Iconv.iconv('utf-8', 'cp1251', tarif).join() + '
 '
 
-message << [ "Баланс: #{(balance - (100 * 1000)) / 3300} дня!"].join()
+message << [ "Баланс: #{(balance - (12 * 1000)) / 3300} дня!"].join()
 
 Growl.notify message
