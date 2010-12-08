@@ -21,14 +21,14 @@ form = Mechanize.new.get('http://users.idom.by/').forms.first
 form.login  = ARGV[0]
 form.passwd = ARGV[1]
 
-data = Hpricot(form.click_button.body).search('span .info').map(&:html)
+data = Hpricot(form.click_button.body).search('table')
 
-balance = data[3].split(',').first.sub(' ', '').to_i
-name = data[0].split(',').first.sub(' ', '')
-tarif = data[2].split(',').first.sub(' ', '')
+balance = data.search('tr')[3].search('td').html.gsub(/[^0-9,]/, "").to_i
+name = data.search('tr')[1].search('td').html
+tarif = data.search('tr')[2].search('td').html
 
 message = ''
-message << 'Счет: ' + Iconv.iconv('utf-8', 'cp1251', name).join() + '
+message << Iconv.iconv('utf-8', 'cp1251', name).join() + '
 '
 message << Iconv.iconv('utf-8', 'cp1251', tarif).join() + '
 '
